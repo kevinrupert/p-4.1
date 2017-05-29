@@ -237,32 +237,28 @@ h1, h2, h3, p, a {
 
 /// Design
 
-.loader {
-  color: $black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -10;
-  .container {
-    @include display(flex);
-    @include align-items(center);
-    @include justify-content(center);
-    height: 100%;
-    @include animation(fade-in 1s ease-in forwards);
-  }
-}
+// .loader {
+//   color: $black;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   z-index: -10;
+
+//   .container {
+//     @include display(flex);
+//     @include align-items(center);
+//     @include justify-content(center);
+//     height: 100%;
+//     @include animation(fade-in 2s ease forwards);
+//   }
+// }
 
 .page-container {
   background: $black;
   opacity: 0;
   @include animation(fade-in 1.5s 1.25s ease-in forwards);
-  @include breakpoint(large-screen-up) {
-    background: $black;
-    opacity: 0;
-    @include animation(fade-in 1.5s 1.25s ease-in forwards);
-  }
 }
 
 .section {
