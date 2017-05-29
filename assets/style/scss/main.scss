@@ -49,19 +49,24 @@ body {
   height: 100%;
   font-family: $untitled;
   font-size: $base-font-size;
-  font-weight: 400;
+  font-weight: normal;
   font-style: normal;
   line-height: $base-line-height;
   color: $base-font-color;
-  font-feature-settings: "kern", "liga", "pnum";
   -webkit-font-smoothing: antialiased;
   background: $black;
 }
 
 a {
-  color: $black;
-  text-decoration: none;
   border-bottom: 1px solid rgba($black, 0.25);
+  padding-bottom: 1px;
+  color: $white;
+  text-decoration: none;
+  box-sizing: border-box;
+  @include transition(all 0.3s ease-in-out);
+  &:hover {
+    border-bottom: 1px solid rgba($black, 1);
+  }
 }
 
 h1, h2, h3, p, a {
@@ -76,21 +81,34 @@ h1, h2, h3, p, a {
 .title-1 {
   font-size: 30px;
   line-height: 30px;
-  font-weight: 600;
   @include breakpoint(medium-screen-up) {
     font-size: 48px;
     line-height: 48px;
   }
   @include breakpoint(large-screen-up) {
     font-size: 64px;
-    line-height: 64px;
+    line-height: 63px;
+  }
+}
+
+.large {
+  font-size: 16px;
+  line-height: 26px;
+  max-width: 650px;
+  @include breakpoint(medium-screen-up) {
+    font-size: 22px;
+    line-height: 33px;
+    max-width: 650px;
   }
 }
 
 .regular {
   font-size: 16px;
-  line-height: 20px;
+  line-height: 26px;
   max-width: 650px;
+  &.solid {
+    line-height: 18px;
+  }
 }
 
 /// Spacing
@@ -127,6 +145,24 @@ h1, h2, h3, p, a {
   margin-bottom: 48px;
 }
 
+.pad-24 {
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.pad-scale {
+  padding: 16px;
+  @include breakpoint(medium-screen-up) {
+    padding: 24px;
+  }
+  @include breakpoint(large-screen-up) {
+    padding: 48px;
+  }
+  &.mid {
+    padding-top: 0;
+  }
+}
+
 /// Layout
 
 .split {
@@ -142,122 +178,150 @@ h1, h2, h3, p, a {
   }
 }
 
-.flex-center {
+.flx {
   @include display(flex);
-  @include align-items(center);
-  @include justify-content(center);
-  &.vertical {
+  &.flx-a-c {
+    @include align-items(center);
+  }
+  &.flx-a-e {
+    @include align-items(flex-end);
+  }
+  &.flx-j-c {
+    @include justify-content(center);
+  }
+  &.flx-j-e {
+    @include justify-content(flex-end);
+  }
+  &.flx-j-sb {
+    @include justify-content(space-between);
+  }
+  &.flx-d-cl {
     @include flex-direction(column);
   }
 }
 
-.ratio {
-  @include aspect-ratio(3, 4);
+.flx-as-c {
+  @include align-self(center);
+}
+
+.max-w {
+  max-width: 150px;
+  @include breakpoint(medium-screen-up) {
+    max-width: 300px;
+  }
+}
+
+.max-w-small {
+  max-width: 150px;
+  @include breakpoint(medium-screen-up) {
+    max-width: 200px;
+  }
+}
+
+.circle-up {
+  img {
+    border-radius: 50%;
+  }
 }
 
 /// Design
 
-.page-container {
-  padding: 24px;
-  box-sizing: border-box;
-  @include breakpoint(medium-screen-up) {
-    padding: 48px;
-  }
-  .section-start {
-    margin-top: 24px;
-    @include breakpoint(large-screen-up) {
-      margin-top: 48px;
+.section {
+  &.full {
+    padding: 24px;
+    box-sizing: border-box;
+    text-align: center;
+    @include breakpoint(medium-screen-up) {
+      @include aspect-ratio(4, 3);
+    }
+    &.deeplocal {
+      background: #000000;
+    }
+    .content {
+      box-sizing: border-box;
+      @include breakpoint(medium-screen-up) {
+        padding: 48px;
+      }
+    }
+    a {
+      border-bottom: 1px solid rgba($white, 0.25);
+      &:hover {
+        border-bottom: 1px solid rgba($white, 1);
+      }
+    }
+    .years {
+      .vertical-rule {
+        background: $white;
+        height: 100px;
+        width: 1px;
+      }
     }
   }
-  .cover {
+  .page {
+    background: $white;
+    color: $black;
     line-height: 0;
     position: relative;
-    img {
+    @include breakpoint(medium-screen-up) {
+      @include aspect-ratio(3, 4);
+    }
+    &.ratio {
+      @include aspect-ratio(3, 4);
+    }
+    &.bg-black {
+      background: #000000;
+    }
+    .content {
+      &.pad-24 {
+        box-sizing: border-box;
+        @include breakpoint(medium-screen-up) {
+          padding: 48px;
+        }
+      }
+      a {
+        border-bottom: 1px solid rgba($black, 0.25);
+        color: $black;
+        &:hover {
+          border-bottom: 1px solid rgba($black, 1);
+        }
+      }
+    }
+    .horizontal-rule {
       width: 100%;
+      background: $white;
+      height: 1px;
     }
-    .text {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      padding: 24px;
-      box-sizing: border-box;
-      @include display(flex);
-      @include flex-direction(column);
-      @include justify-content(space-between);
-      .title-1, .regular {
-        width: 100%;
-      }
-      &.overlay {
-        background: $image-overlay;
-      }
-    }
-  }
-  .aside {
-    @include display(flex);
-    @include align-items(center);
-    @include justify-content(center);
-    position: relative;
-    .annotation {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      z-index: 10;
+    .image {
+      line-height: 0;
       img {
         width: 100%;
       }
     }
-    .content {
-      @include display(flex);
-      @include flex-direction(column);
-      padding: 24px;
-      box-sizing: border-box;
-      @include breakpoint(large-screen-up) {
-        margin-top: 0;
-        padding: 48px;
-      }
-      background: $white;
-      color: $black;
-      &.first {
-        margin-top: 24px;
-      }
-      .image {
-        img {
-          width: 100%;
+    video {
+      width: 100%;
+    }
+    .overlay {
+      position: absolute;
+      color: $white;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      line-height: 0;
+      a {
+        border-bottom: 1px solid rgba($white, 0.25);
+        color: $white;
+        &:hover {
+          border-bottom: 1px solid rgba($white, 1);
         }
       }
-      .container {
-        max-width: 200px;
-        @include breakpoint(medium-screen-up) {
-          max-width: 300px;
-        }
-      }
-      .years {
-        text-align: center;
-        @include display(flex);
-        @include flex-direction(column);
-        @include align-items(center);
-        @include justify-content(center);
-        .vertical-rule {
-          width: 1px;
-          background: $black;
-          height: 100px;
-          margin-top: 24px;
-          margin-bottom: 24px;
-        }
-      }
-      .circle {
-        img {
-          border-radius: 50%;
-        }
+      &.photo-fill {
+        background: $image-overlay;
       }
     }
   }
 }
-
 
 
 
