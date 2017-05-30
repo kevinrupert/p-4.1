@@ -61,7 +61,7 @@ body {
   line-height: 1;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
-  background: #ffffff; }
+  background: #000000; }
 
 a {
   border-bottom: 1px solid rgba(34, 34, 34, 0.25);
