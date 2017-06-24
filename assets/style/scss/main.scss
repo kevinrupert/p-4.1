@@ -336,6 +336,7 @@ h1, h2, h3, p, a {
       background: #000000;
     }
     .content {
+      z-index: 1;
       &.pad-24 {
         box-sizing: border-box;
         @include breakpoint(medium-screen-up) {
@@ -408,6 +409,9 @@ h1, h2, h3, p, a {
         &:hover {
           border-bottom: 1px solid rgba($white, 1);
         }
+      }
+      &.behind {
+        z-index: 0;
       }
       &.photo-fill {
         background: $image-overlay;

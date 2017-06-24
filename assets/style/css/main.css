@@ -365,38 +365,40 @@ h1::selection, h2::selection, h3::selection, p::selection, a::selection {
       bottom: 0; }
   .section .page.bg-black {
     background: #000000; }
-  .section .page .content.pad-24 {
-    box-sizing: border-box; }
-    @media (min-width: 43.75em) {
-      .section .page .content.pad-24 {
-        padding: 48px; } }
-  .section .page .content a {
-    border-bottom: 1px solid rgba(34, 34, 34, 0.25);
-    color: #222222; }
-    .section .page .content a:hover {
-      border-bottom: 1px solid #222222; }
-  .section .page .content.intro-1 {
-    opacity: 0;
-    -webkit-animation: fade-in 1s 2.5s ease-in forwards;
-    -moz-animation: fade-in 1s 2.5s ease-in forwards;
-    animation: fade-in 1s 2.5s ease-in forwards; }
-    @media (min-width: 68.75em) {
-      .section .page .content.intro-1 {
-        opacity: 0;
-        -webkit-animation: fade-in 1s 2.5s ease-in forwards;
-        -moz-animation: fade-in 1s 2.5s ease-in forwards;
-        animation: fade-in 1s 2.5s ease-in forwards; } }
-  .section .page .content.intro-2 {
-    opacity: 0;
-    -webkit-animation: fade-in 1s 3s ease-in forwards;
-    -moz-animation: fade-in 1s 3s ease-in forwards;
-    animation: fade-in 1s 3s ease-in forwards; }
-    @media (min-width: 68.75em) {
-      .section .page .content.intro-2 {
-        opacity: 0;
-        -webkit-animation: fade-in 1s 3s ease-in forwards;
-        -moz-animation: fade-in 1s 3s ease-in forwards;
-        animation: fade-in 1s 3s ease-in forwards; } }
+  .section .page .content {
+    z-index: 1; }
+    .section .page .content.pad-24 {
+      box-sizing: border-box; }
+      @media (min-width: 43.75em) {
+        .section .page .content.pad-24 {
+          padding: 48px; } }
+    .section .page .content a {
+      border-bottom: 1px solid rgba(34, 34, 34, 0.25);
+      color: #222222; }
+      .section .page .content a:hover {
+        border-bottom: 1px solid #222222; }
+    .section .page .content.intro-1 {
+      opacity: 0;
+      -webkit-animation: fade-in 1s 2.5s ease-in forwards;
+      -moz-animation: fade-in 1s 2.5s ease-in forwards;
+      animation: fade-in 1s 2.5s ease-in forwards; }
+      @media (min-width: 68.75em) {
+        .section .page .content.intro-1 {
+          opacity: 0;
+          -webkit-animation: fade-in 1s 2.5s ease-in forwards;
+          -moz-animation: fade-in 1s 2.5s ease-in forwards;
+          animation: fade-in 1s 2.5s ease-in forwards; } }
+    .section .page .content.intro-2 {
+      opacity: 0;
+      -webkit-animation: fade-in 1s 3s ease-in forwards;
+      -moz-animation: fade-in 1s 3s ease-in forwards;
+      animation: fade-in 1s 3s ease-in forwards; }
+      @media (min-width: 68.75em) {
+        .section .page .content.intro-2 {
+          opacity: 0;
+          -webkit-animation: fade-in 1s 3s ease-in forwards;
+          -moz-animation: fade-in 1s 3s ease-in forwards;
+          animation: fade-in 1s 3s ease-in forwards; } }
   .section .page .horizontal-rule {
     width: 100%;
     background: #ffffff;
@@ -435,6 +437,8 @@ h1::selection, h2::selection, h3::selection, p::selection, a::selection {
       color: #ffffff; }
       .section .page .overlay a:hover {
         border-bottom: 1px solid white; }
+    .section .page .overlay.behind {
+      z-index: 0; }
     .section .page .overlay.photo-fill {
       background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%); }
     .section .page .overlay.black-text {
